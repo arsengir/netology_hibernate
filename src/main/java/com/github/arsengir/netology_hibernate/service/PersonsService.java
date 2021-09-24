@@ -5,6 +5,7 @@ import com.github.arsengir.netology_hibernate.repository.entity.Persons;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PersonsService {
@@ -16,6 +17,14 @@ public class PersonsService {
 
     public List<Persons> getPersonsByCity(String city) {
         return personsRepository.getPersonsByCity(city);
+    }
+
+    public List<Persons> getPersonsLessAge(int age){
+        return personsRepository.getPersonsLessAge(age);
+    }
+
+    public Optional<Persons> getPersonsNameSurname(String name, String surname) {
+        return personsRepository.getPersonsNameSurname(name, surname);
     }
 
     public String initPersons() {

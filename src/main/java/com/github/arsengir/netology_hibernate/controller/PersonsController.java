@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class PersonsController {
@@ -20,6 +21,16 @@ public class PersonsController {
     @GetMapping("/persons/by-city")
     public List<Persons> getPersonsByCity(@RequestParam("city") String city){
         return personsService.getPersonsByCity(city);
+    }
+
+    @GetMapping("/persons/less-age")
+    public List<Persons> getPersonsLessAge(@RequestParam("age") int age){
+        return personsService.getPersonsLessAge(age);
+    }
+
+    @GetMapping("/persons")
+    public Optional<Persons> getPersonsNameSurname(@RequestParam("name") String name, @RequestParam("surname") String surname) {
+        return personsService.getPersonsNameSurname(name, surname);
     }
 
     @GetMapping("/persons/init")
