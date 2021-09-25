@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
@@ -16,17 +18,12 @@ import java.io.Serializable;
 @Entity
 public class Persons implements Serializable {
 
-    @Id
-    private String name;
-
-    @Id
-    private String surname;
-
-    @Id
-    private int age;
+    @EmbeddedId
+    private PersonsId personsId;
 
     private String phone_number;
 
-    private String city_of_living;
+    @Column(name = "city_of_living")
+    private String city;
 
 }
